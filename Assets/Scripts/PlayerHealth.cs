@@ -35,6 +35,10 @@ public class PlayerHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             gameObject.SetActive(false);
+
+            currentHealth = 0;
+
+            GameManager.instance.PlayerDeath();
         }
 
         UI.instance.healthSlider.value = currentHealth;

@@ -58,36 +58,39 @@ public class EnemyMove : MonoBehaviour
         }
         else
         {
-            shootTimeCounter -= Time.deltaTime;
-
-            if (shootTimeCounter > 0)
+            if (PlayerMove.instance.gameObject.activeInHierarchy)
             {
-                fireCount -= Time.deltaTime;
+                shootTimeCounter -= Time.deltaTime;
 
-                if (fireCount <= 0)
+                if (shootTimeCounter > 0)
                 {
-                    fireCount = fireRate;
+                    fireCount -= Time.deltaTime;
 
-                    firePoint.LookAt(PlayerMove.instance.transform.position + new Vector3(0f, 1.6f, 0f));
-
-                    Vector3 targetDirection = PlayerMove.instance.transform.position - transform.position;
-                    float angle = Vector3.SignedAngle(targetDirection, transform.forward, Vector3.up);
-
-                    if (Mathf.Abs(angle) < 30f)
+                    if (fireCount <= 0)
                     {
-                        Instantiate(bullet, firePoint.position, firePoint.rotation);
-                    }
-                    else
-                    {
-                        transform.LookAt(PlayerMove.instance.transform.position);
-                        shotWaitCounter = waitBetweenShots;
+                        fireCount = fireRate;
+
+                        firePoint.LookAt(PlayerMove.instance.transform.position + new Vector3(0f, 1.6f, 0f));
+
+                        Vector3 targetDirection = PlayerMove.instance.transform.position - transform.position;
+                        float angle = Vector3.SignedAngle(targetDirection, transform.forward, Vector3.up);
+
+                        if (Mathf.Abs(angle) < 30f)
+                        {
+                            Instantiate(bullet, firePoint.position, firePoint.rotation);
+                        }
+                        else
+                        {
+                            transform.LookAt(PlayerMove.instance.transform.position);
+                            shotWaitCounter = waitBetweenShots;
+                        }
                     }
                 }
-            }
-            
-            else
-            {
-                shotWaitCounter = waitBetweenShots;
+
+                else
+                {
+                    shotWaitCounter = waitBetweenShots;
+                }
             }
         }           
     }
