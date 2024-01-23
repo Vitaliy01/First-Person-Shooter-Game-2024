@@ -17,6 +17,9 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        UI.instance.healthSlider.maxValue = maxHealth;
+        UI.instance.healthSlider.value = currentHealth;
+        UI.instance.healthText.text = "HEALTH: " + currentHealth + "/" + maxHealth;
     }
 
     // Update is called once per frame
@@ -33,5 +36,8 @@ public class PlayerHealth : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        UI.instance.healthSlider.value = currentHealth;
+        UI.instance.healthText.text = "HEALTH: " + currentHealth + "/" + maxHealth;
     }
 }
