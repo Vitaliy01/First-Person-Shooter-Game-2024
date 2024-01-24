@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UI.instance.ammunitionText.text = "" + activeGun.currentAmmunition;
     }
 
     // Update is called once per frame
@@ -130,8 +130,15 @@ public class PlayerMove : MonoBehaviour
 
     public void FireShot()
     {
-        Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
+        if(activeGun.currentAmmunition > 0)
+        {
+            activeGun.currentAmmunition--;
 
-        activeGun.fireCounter = activeGun.fireRate;
+            Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
+
+            activeGun.fireCounter = activeGun.fireRate;
+
+            UI.instance.ammunitionText.text = "" + activeGun.currentAmmunition;
+        }       
     }
 }

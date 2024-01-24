@@ -9,7 +9,7 @@ public class UI : MonoBehaviour
     public static UI instance;
 
     public Slider healthSlider;
-    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI healthText, ammunitionText;
 
     private void Awake()
     {
