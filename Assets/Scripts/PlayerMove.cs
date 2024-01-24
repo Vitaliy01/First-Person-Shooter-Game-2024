@@ -24,6 +24,8 @@ public class PlayerMove : MonoBehaviour
     public GameObject bullet;
     public Transform firePoint;
 
+    public Gun activeGun;
+
     private void Awake()
     {
         instance = this;
@@ -97,10 +99,16 @@ public class PlayerMove : MonoBehaviour
                 }
             }
 
-            Instantiate(bullet, firePoint.position, firePoint.rotation);
+            //Instantiate(bullet, firePoint.position, firePoint.rotation);
+            FireShot();
         }
 
         animator.SetFloat("moveSpeed", moveInput.magnitude);
         animator.SetBool("onGround", canJump);
+    }
+
+    public void FireShot()
+    {
+        Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
     }
 }

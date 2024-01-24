@@ -1432,6 +1432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 650140616}
+  - component: {fileID: 650140617}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -1455,6 +1456,19 @@ Transform:
   m_Father: {fileID: 1040707692}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &650140617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650140615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63bdb108e85a36e428bd969a03b25165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 8214241578464140097, guid: ce8bcb59ae4dba04fa0bd9bcf9510d5f, type: 3}
 --- !u!1001 &652363122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6872,8 +6886,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   animator: {fileID: 2145502194}
-  bullet: {fileID: 8214241578464140097, guid: ce8bcb59ae4dba04fa0bd9bcf9510d5f, type: 3}
+  bullet: {fileID: 0}
   firePoint: {fileID: 1677805332}
+  activeGun: {fileID: 650140617}
 --- !u!95 &2145502194
 Animator:
   serializedVersion: 5
