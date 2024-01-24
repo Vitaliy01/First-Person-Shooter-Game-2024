@@ -103,6 +103,27 @@ public class PlayerMove : MonoBehaviour
             FireShot();
         }
 
+        if(Input.GetMouseButton(0) && activeGun.canAutoFire)
+        {
+            if(activeGun.fireCounter <= 0)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, 200f))
+                {
+                    if (Vector3.Distance(cameraTransform.position, hit.point) > 1f)
+                    {
+                        firePoint.LookAt(hit.point);
+                    }
+                    else
+                    {
+                        firePoint.LookAt(cameraTransform.position + (cameraTransform.forward * 40f));
+                    }
+                }
+
+                FireShot();
+            }
+        }
+
         animator.SetFloat("moveSpeed", moveInput.magnitude);
         animator.SetBool("onGround", canJump);
     }
@@ -110,5 +131,7 @@ public class PlayerMove : MonoBehaviour
     public void FireShot()
     {
         Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
+
+        activeGun.fireCounter = activeGun.fireRate;
     }
 }
