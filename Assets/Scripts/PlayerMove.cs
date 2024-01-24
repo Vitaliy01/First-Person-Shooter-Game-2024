@@ -85,7 +85,7 @@ public class PlayerMove : MonoBehaviour
         cameraTransform.rotation = Quaternion.Euler(cameraTransform.rotation.eulerAngles + new Vector3(-mouseInput.y, 0f, 0f));
 
         //Shooting
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && activeGun.fireCounter <= 0)
         {
             RaycastHit hit;
             if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, 200f))
@@ -103,7 +103,7 @@ public class PlayerMove : MonoBehaviour
             FireShot();
         }
 
-        if(Input.GetMouseButton(0) && activeGun.canAutoFire)
+        if (Input.GetMouseButton(0) && activeGun.canAutoFire)
         {
             if(activeGun.fireCounter <= 0)
             {
