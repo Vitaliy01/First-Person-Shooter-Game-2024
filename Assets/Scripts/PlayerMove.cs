@@ -21,10 +21,11 @@ public class PlayerMove : MonoBehaviour
 
     public Animator animator;
 
-    public GameObject bullet;
     public Transform firePoint;
 
     public Gun activeGun;
+    public List<Gun> allGuns = new List<Gun>();
+    public int currentGun;
 
     private void Awake()
     {
@@ -34,6 +35,9 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        activeGun = allGuns[currentGun];
+        activeGun.gameObject.SetActive(true);
+
         UI.instance.ammunitionText.text = "" + activeGun.currentAmmunition;
     }
 
@@ -124,6 +128,11 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SwitchGun();
+        }
+
         animator.SetFloat("moveSpeed", moveInput.magnitude);
         animator.SetBool("onGround", canJump);
     }
@@ -140,5 +149,22 @@ public class PlayerMove : MonoBehaviour
 
             UI.instance.ammunitionText.text = "" + activeGun.currentAmmunition;
         }       
+    }
+
+    public void SwitchGun()
+    {
+        activeGun.gameObject.SetActive(false);
+
+        currentGun++;
+
+        if(currentGun >= allGuns.Count)
+        {
+            currentGun = 0;
+        }
+
+        activeGun = allGuns[currentGun];
+        activeGun.gameObject.SetActive(true);
+
+        UI.instance.ammunitionText.text = "" + activeGun.currentAmmunition;
     }
 }

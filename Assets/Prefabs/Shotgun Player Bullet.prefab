@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 3982042547050502883}
   - component: {fileID: 4031967435811998377}
   m_Layer: 7
-  m_Name: Player Bullet 1
+  m_Name: Shotgun Player Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,10 +216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcbca670ac4b344393936c4bc1f62a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 30
+  bulletSpeed: 20
   lifeTime: 5
   theRigidbody: {fileID: 46336700422752412}
-  damage: 1
+  damage: 5
   damageEnemy: 1
   damagePlayer: 0
 --- !u!96 &4031967435811998377
@@ -243,7 +243,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fdeea9002ae38c64db30d53d3507fb11, type: 2}
+  - {fileID: 2100000, guid: c610dfa09e2d415469365319621bfa0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
