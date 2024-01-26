@@ -35,10 +35,8 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        activeGun = allGuns[currentGun];
-        activeGun.gameObject.SetActive(true);
-
-        UI.instance.ammunitionText.text = "" + activeGun.currentAmmunition;
+        currentGun--;
+        SwitchGun();
     }
 
     // Update is called once per frame
@@ -166,5 +164,7 @@ public class PlayerMove : MonoBehaviour
         activeGun.gameObject.SetActive(true);
 
         UI.instance.ammunitionText.text = "" + activeGun.currentAmmunition;
+
+        firePoint.position = activeGun.firepoint.position;
     }
 }
