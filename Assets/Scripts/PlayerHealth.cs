@@ -32,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
 
+        UI.instance.ShowDamage();
+
         if(currentHealth <= 0)
         {
             gameObject.SetActive(false);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -26,6 +27,8 @@ public class PlayerMove : MonoBehaviour
     public Gun activeGun;
     public List<Gun> allGuns = new List<Gun>();
     public int currentGun;
+
+    public GameObject muzzleFlash;
 
     private void Awake()
     {
@@ -146,7 +149,18 @@ public class PlayerMove : MonoBehaviour
             activeGun.fireCounter = activeGun.fireRate;
 
             UI.instance.ammunitionText.text = "" + activeGun.currentAmmunition;
+
+            StartCoroutine(WaitAndSetActiveFalse());
         }       
+    }
+
+    IEnumerator WaitAndSetActiveFalse()
+    {
+        muzzleFlash.SetActive(true);
+
+        yield return new WaitForSeconds(0.2f);
+
+        muzzleFlash.SetActive(false);
     }
 
     public void SwitchGun()
