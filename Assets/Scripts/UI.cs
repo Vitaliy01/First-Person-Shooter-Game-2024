@@ -9,13 +9,15 @@ public class UI : MonoBehaviour
     public static UI instance;
 
     public Slider healthSlider;
-    public TextMeshProUGUI healthText, ammunitionText;
+    public TextMeshProUGUI healthText, ammunitionText, killedEnemiesText;
 
     public GameObject pauseScreen;
 
     public Image damageEffect;
 
     public float damageAlpha = 0.3f, damageFadeSpeed = 3f;
+
+    public int killedEnemies;
 
     private void Awake()
     {
@@ -25,7 +27,7 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
