@@ -11,6 +11,8 @@ public class UI : MonoBehaviour
     public Slider healthSlider;
     public TextMeshProUGUI healthText, ammunitionText;
 
+    public GameObject pauseScreen;
+
     public Image damageEffect;
 
     public float damageAlpha = 0.3f, damageFadeSpeed = 3f;
