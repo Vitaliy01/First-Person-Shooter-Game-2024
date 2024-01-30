@@ -17,8 +17,6 @@ public class UI : MonoBehaviour
 
     public float damageAlpha = 0.3f, damageFadeSpeed = 3f;
 
-    public int killedEnemies;
-
     private void Awake()
     {
         instance = this;

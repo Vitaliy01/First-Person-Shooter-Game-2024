@@ -5,14 +5,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public static EnemyHealth instance;
-
     public int currentHealth;
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +27,11 @@ public class EnemyHealth : MonoBehaviour
         {
             Destroy(gameObject);
 
-            UI.instance.killedEnemies++;
+            GameManager.instance.killedEnemies++;
 
-            UI.instance.killedEnemiesText.text = "Killed Enemies: " + UI.instance.killedEnemies;
+            /*GameManager.instance.PlayerDeath();*/
+
+            UI.instance.killedEnemiesText.text = "Killed Enemies: " + GameManager.instance.killedEnemies;
         }
     }
 }
